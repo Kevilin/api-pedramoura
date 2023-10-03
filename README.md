@@ -18,4 +18,4 @@ Dentro do repositório, rode:
 docker-compose up -d
 ```
 
-URL Base para as requisições: [localhost:3000](localhost:3000).# api-pedramoura
+URL Base para as requisições: [localhost:3000](localhost:3000)
