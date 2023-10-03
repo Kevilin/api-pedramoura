@@ -18,7 +18,7 @@ export class ProdutoService {
   async listProdutos() {
     const produtosSalvos = await this.produtoRepository.find();
     const produtosLista = produtosSalvos.map(
-      (produto) => new ListaProdutoDTO(produto.id, produto.nome),
+      (produto) => new ListaProdutoDTO(produto.id, produto.nome, produto.valor, produto.createdAt, produto.updatedAt),
     );
     return produtosLista;
   }

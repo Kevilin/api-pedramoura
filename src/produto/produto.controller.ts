@@ -23,6 +23,7 @@ export class ProdutoController {
     const produto = new ProdutoEntity();
 
     produto.nome = dadosProduto.nome;
+    produto.valor = dadosProduto.valor;
 
     const produtoCadastrado = this.produtoService.criaProduto(produto);
 

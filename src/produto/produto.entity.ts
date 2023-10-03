@@ -8,6 +8,9 @@ export class ProdutoEntity {
     @Column({name: 'nome', length: 100, nullable: false})
     nome: string;
 
+    @Column({name: 'valor', type: 'decimal'})
+    valor: string;
+
     @CreateDateColumn({ name: 'created_at' })
     createdAt: string;
 
