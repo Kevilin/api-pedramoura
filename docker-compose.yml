@@ -6,6 +6,6 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    command: npm run start:dev 
+    command: ./entrypoint.sh
     ports:
       - "3000:3000"
