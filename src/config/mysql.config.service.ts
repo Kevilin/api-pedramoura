@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { ProdutoEntity } from 'src/produto/produto.entity';
+import { VendaEntity } from 'src/venda/venda.entity';
 
 @Injectable()
 export class MysqlConfigService implements TypeOrmOptionsFactory {
@@ -13,7 +14,7 @@ export class MysqlConfigService implements TypeOrmOptionsFactory {
       username: 'kmr02',
       password: 'pos123',
       database: 'kmr02',
-      entities: [ProdutoEntity],
+      entities: [ProdutoEntity, VendaEntity],
       synchronize: true,
     };
   }
