@@ -15,11 +15,21 @@ export class ProdutoService {
     await this.produtoRepository.save(produtoEntity);
   }
 
-  async listProdutos() {
+  async listaProdutos() {
     const produtosSalvos = await this.produtoRepository.find();
     const produtosLista = produtosSalvos.map(
       (produto) => new ListaProdutoDTO(produto.id, produto.nome, produto.valor, produto.createdAt, produto.updatedAt),
     );
     return produtosLista;
+  }
+
+  async atualizaProduto(id: string, novosDados) {
+    const entityName = await this.produtoRepository.findOneBy({ id });
+    Object.assign(entityName, novosDados);
+    await this.produtoRepository.save(entityName);
+  }
+
+  async deletaProduto(id: string) {
+    await this.produtoRepository.delete(id);
   }
 }

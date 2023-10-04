@@ -28,14 +28,38 @@ export class ProdutoController {
     const produtoCadastrado = this.produtoService.criaProduto(produto);
 
     return {
-      mensagem: 'produto cadastrado com sucesso',
-      produto: produto.nome,
+      mensagem: `Produto ${produto.nome} cadastrado com sucesso`,
     };
   }
 
   @Get('/listar')
   async listaTodos() {
-    return this.produtoService.listProdutos();
+    return this.produtoService.listaProdutos();
   }
 
+  @Put('/atualizar/:id')
+  async atualiza(
+    @Param('id') id: string,
+    @Body() dadosProduto,
+  ) {
+    const produtoAlterado = await this.produtoService.atualizaProduto(
+      id,
+      dadosProduto,
+    );
+
+    return {
+      mensagem: `produto ${id} atualizado com sucesso`,
+      produto: produtoAlterado,
+    };
+  }
+
+  @Delete('/deletar/:id')
+  async remove(@Param('id') id: string) {
+    const produtoRemovido = await this.produtoService.deletaProduto(id);
+
+    return {
+      mensagem: `produto ${id} removido com sucesso`,
+      produto: produtoRemovido,
+    };
+  }
 }

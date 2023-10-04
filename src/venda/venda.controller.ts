@@ -1,8 +1,11 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  Param,
   Post,
+  Put,
 } from '@nestjs/common';
 
 import { VendaEntity } from './venda.entity';
@@ -52,5 +55,31 @@ export class VendaController {
   @Get('/listar')
   async listaTodos() {
     return this.vendaService.listaVendas();
+  }
+
+  @Put('/atualizar/:id')
+  async atualizaVenda(
+    @Param('id') id: string,
+    @Body() dadosProduto,
+  ) {
+    const produtoAlterado = await this.vendaService.atualizaVenda(
+      id,
+      dadosProduto,
+    );
+
+    return {
+      mensagem: `venda ${id} atualizada com sucesso`,
+      produto: produtoAlterado,
+    };
+  }
+
+  @Delete('/deletar/:id')
+  async remove(@Param('id') id: string) {
+    const produtoRemovido = await this.vendaService.deletaVenda(id);
+
+    return {
+      mensagem: `venda ${id} removida com sucesso`,
+      produto: produtoRemovido,
+    };
   }
 }

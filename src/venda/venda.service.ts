@@ -36,4 +36,14 @@ export class VendaService {
     );
     return vendasLista;
   }
+
+  async atualizaVenda(id: string, novosDados) {
+    const entityName = await this.vendaRepository.findOneBy({ id });
+    Object.assign(entityName, novosDados);
+    await this.vendaRepository.save(entityName);
+  }
+
+  async deletaVenda(id: string) {
+    await this.vendaRepository.delete(id);
+  }
 }

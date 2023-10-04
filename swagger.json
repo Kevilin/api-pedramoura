@@ -1,0 +1,419 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API Pedra moura",
+      "description": "API usada para fins acadêmicos",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Desenvolvimento"
+      }
+    ],
+    "paths": {
+      "/produtos/criar": {
+        "post": {
+          "summary": "",
+          "description": "",
+          "tags": ["Produtos"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "teste": {
+                    "value": {
+                      "nome": "xxx",
+                      "valor": 10.2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "produto cadastrado com sucesso"
+            }
+          }
+        }
+      },
+      "/vendas/criar": {
+        "post": {
+          "summary": "",
+          "description": "",
+          "tags": ["Vendas"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "teste": {
+                    "value": {
+                        "produtosVendas": [{"idProduto": 1, "quantidade": 2}, {"idProduto": 2, "quantidade": 4}],
+                        "dataVenda": "2023-10-03",
+                        "valorVenda": 10.20,
+                        "vendedor": "teste",
+                        "cliente": "teste",
+                        "observacao": "teste"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "produto cadastrado com sucesso"
+            }
+          }
+        }
+      },
+      "/produtos/deletar/{id}": {
+        "delete": {
+          "summary": "",
+          "description": "",
+          "tags": ["Produtos"],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID do produto",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted",
+              "content": {}
+            }
+          }
+        }
+      },
+      "/vendas/deletar/{id}": {
+        "delete": {
+          "summary": "",
+          "description": "",
+          "tags": ["Vendas"],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID da venda",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted",
+              "content": {}
+            }
+          }
+        }
+      },
+      "/vendas/atualizar/{id}": {
+        "put": {
+          "summary": "",
+          "description": "",
+          "tags": ["Vendas"],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID da venda",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted",
+              "content": {}
+            }
+          }
+        }
+      },
+      "/produtos/atualizar/{id}": {
+        "put": {
+          "summary": "",
+          "description": "",
+          "tags": ["Produtos"],
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID do produto",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted",
+              "content": {}
+            }
+          }
+        }
+      },
+      "/produtos/listar": {
+        "get": {
+          "summary": "",
+          "description": "",
+          "tags": ["Produtos"],
+          "responses": {
+            "400": {
+              "description": "Bad Request"
+            },
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      },
+      "/vendas/listar": {
+        "get": {
+          "summary": "",
+          "description": "",
+          "tags": ["Vendas"],
+          "responses": {
+            "400": {
+              "description": "Bad Request"
+            },
+            "200": {
+              "description": "Ok"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "User": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "AvailableMethods": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "active": {
+              "type": "number"
+            },
+            "time_limit": {
+              "type": "number"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        },
+        "ActiveMethods": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "user_id": {
+              "type": "integer"
+            },
+            "method_id": {
+              "type": "integer"
+            },
+            "key": {
+              "type": "string"
+            },
+            "active": {
+              "type": "integer"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          }
+        },
+        "AppConfiguration": {
+          "type": "object",
+          "properties": {
+            "secret": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          }
+        },
+        "Credentials": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string"
+            },
+            "two_step_auth": {
+              "type": "boolean"
+            },
+            "credentials": {
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string"
+                },
+                "expires_in": {
+                  "type": "string"
+                },
+                "refresh_token": {
+                  "type": "string"
+                },
+                "token_type": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "CredentialsConfig": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string"
+            },
+            "credentials": {
+              "type": "object",
+              "properties": {
+                "token_type": {
+                  "type": "string"
+                },
+                "access_token": {
+                  "type": "string"
+                },
+                "expires_in": {
+                  "type": "string"
+                },
+                "refresh_token": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "UserSocialLoginCredentials": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string"
+            },
+            "token": {
+              "type": "string"
+            }
+          }
+        },
+        "UserSocialLoginRequest": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string"
+            },
+            "user_id": {
+              "type": "number"
+            },
+            "email": {
+              "type": "string"
+            }
+          }
+        },
+        "UserSocialLoginProvider": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string"
+            },
+            "user_id": {
+              "type": "number"
+            }
+          }
+        },
+        "UserSocialLoginResponse": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "provider_id": {
+              "type": "number"
+            },
+            "user_id": {
+              "type": "number"
+            },
+            "email": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "deleted_at": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "ApiKeyAuth": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "Config-Authorization"
+        },
+        "InternalHash": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "Internal-Hash"
+        },
+        "BearerAuth": {
+          "type": "http",
+          "scheme": "bearer"
+        }
+      }
+    }
+  }
+  
