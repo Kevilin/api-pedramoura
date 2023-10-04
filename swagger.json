@@ -69,7 +69,7 @@
           },
           "responses": {
             "200": {
-              "description": "produto cadastrado com sucesso"
+              "description": "venda cadastrada com sucesso"
             }
           }
         }
@@ -147,7 +147,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Deleted",
+              "description": "Atualizado",
               "content": {}
             }
           }
@@ -184,7 +184,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Deleted",
+              "description": "Atualizado",
               "content": {}
             }
           }
