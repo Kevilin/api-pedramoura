@@ -121,6 +121,22 @@
           "summary": "",
           "description": "",
           "tags": ["Vendas"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "teste": {
+                    "value": {
+                      "valorVenda": 20
+                    }
+                  }
+                }
+              }
+            }
+          },
           "parameters": [
             {
               "name": "id",
@@ -142,6 +158,22 @@
           "summary": "",
           "description": "",
           "tags": ["Produtos"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "teste": {
+                    "value": {
+                      "valor": 20
+                    }
+                  }
+                }
+              }
+            }
+          },
           "parameters": [
             {
               "name": "id",
