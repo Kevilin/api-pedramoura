@@ -11,6 +11,7 @@ import {
 import { VendaEntity } from './venda.entity';
 import { CriaVendaDTO } from './dto/CriaVenda.dto';
 import { VendaService } from './venda.service';
+import { VendasProdutosEntity } from './vendas-produtos.entity';
 
 @Controller('vendas')
 export class VendaController {
@@ -29,13 +30,21 @@ export class VendaController {
     venda.cliente = dadosVenda.cliente;
     venda.observacao = dadosVenda.observacao;
 
-    const vendaCadastrada = this.vendaService.criaVenda(venda);
+    const vendaCadastrada = this.vendaService.criaVenda(venda); //vendas
+
+    const vendasProdutos = new VendasProdutosEntity();
+
+    vendasProdutos.idVenda = vendaCadastrada;
+    vendasProdutos.idProduto = dadosVenda.idProduto;
+    vendasProdutos.quantidade = dadosVenda.quantidade;
+
+    this.vendaService.criaVendasProdutos(vendasProdutos); //vendas-produtos
 
     return {
       mensagem: 'venda cadastrada com sucesso',
     };
   }
-
+  
   @Get('/listar')
   async listaTodos() {
     return this.vendaService.listaVendas();

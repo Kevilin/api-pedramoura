@@ -15,6 +15,10 @@ export class VendaService {
     await this.vendaRepository.save(vendaEntity);
   }
 
+  async criaVendasProdutos(vendasProdutosEntity: VendasProdutosEntity) {
+    await this.vendaRepository.save(vendasProdutosEntity);
+  }
+
   async listaVendas() {
     try {
       const vendasSalvas = await this.vendaRepository.find();

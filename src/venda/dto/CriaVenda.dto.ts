@@ -5,6 +5,9 @@ import {
 
 export class CriaVendaDTO {
   @IsNotEmpty({ message: ''})
+  idProduto: number;
+
+  @IsNotEmpty({ message: ''})
   qtdVendida: number;
 
   @IsNotEmpty({ message: ''})
