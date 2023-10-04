@@ -3,20 +3,25 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ListaVendaDTO } from './dto/ListaVenda.dto';
 import { VendaEntity } from './venda.entity';
 import { Repository } from 'typeorm';
+import { VendasProdutosEntity } from './vendas-produtos.entity';
 
 @Injectable()
 export class VendaService {
   constructor(
     @InjectRepository(VendaEntity)
     private readonly vendaRepository: Repository<VendaEntity>,
+    
+    @InjectRepository(VendasProdutosEntity)
+    private readonly vendasProdutosRepository: Repository<VendasProdutosEntity>,
   ) {}
 
   async criaVenda(vendaEntity: VendaEntity) {
-    await this.vendaRepository.save(vendaEntity);
+    const vendaCriada = await this.vendaRepository.save(vendaEntity);
+    return vendaCriada;
   }
 
   async criaVendasProdutos(vendasProdutosEntity: VendasProdutosEntity) {
-    await this.vendaRepository.save(vendasProdutosEntity);
+    await this.vendasProdutosRepository.save(vendasProdutosEntity);
   }
 
   async listaVendas() {

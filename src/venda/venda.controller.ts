@@ -12,6 +12,7 @@ import { VendaEntity } from './venda.entity';
 import { CriaVendaDTO } from './dto/CriaVenda.dto';
 import { VendaService } from './venda.service';
 import { VendasProdutosEntity } from './vendas-produtos.entity';
+import { log } from 'console';
 
 @Controller('vendas')
 export class VendaController {
@@ -30,13 +31,15 @@ export class VendaController {
     venda.cliente = dadosVenda.cliente;
     venda.observacao = dadosVenda.observacao;
 
-    const vendaCadastrada = this.vendaService.criaVenda(venda); //vendas
+    const vendaCadastrada = await this.vendaService.criaVenda(venda); //vendas
+
+    let idVenda = parseInt(vendaCadastrada.id)
 
     const vendasProdutos = new VendasProdutosEntity();
 
-    vendasProdutos.idVenda = vendaCadastrada;
+    vendasProdutos.idVenda =  idVenda;
     vendasProdutos.idProduto = dadosVenda.idProduto;
-    vendasProdutos.quantidade = dadosVenda.quantidade;
+    vendasProdutos.quantidade = dadosVenda.qtdVendida;
 
     this.vendaService.criaVendasProdutos(vendasProdutos); //vendas-produtos
 
