@@ -32,7 +32,7 @@ export class VendaService {
     }
     const vendasSalvas = await this.vendaRepository.find();
     const vendasLista = vendasSalvas.map(
-      (venda) => new ListaVendaDTO(venda.id, venda.qtdVendida,venda.dataVenda,venda.valorVenda,venda.vendedor,venda.cliente,venda.observacao),
+      (venda) => new ListaVendaDTO(venda.id,venda.dataVenda,venda.valorVenda,venda.vendedor,venda.cliente,venda.observacao),
     );
     return vendasLista;
   }

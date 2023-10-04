@@ -8,9 +8,6 @@ export class CriaVendaDTO {
   idProduto: number;
 
   @IsNotEmpty({ message: ''})
-  qtdVendida: number;
-
-  @IsNotEmpty({ message: ''})
   dataVenda: Date;
 
   @IsNotEmpty({ message: ''})
@@ -24,4 +21,7 @@ export class CriaVendaDTO {
 
   @IsNotEmpty({ message: ''})
   observacao: string;
+
+  @IsNotEmpty({ message: ''})
+  produtosVendas: string;
 }

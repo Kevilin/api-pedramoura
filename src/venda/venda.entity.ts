@@ -5,9 +5,6 @@ export class VendaEntity {
     @PrimaryGeneratedColumn()
     id: string;
 
-    @Column({name: 'qtdVendida', nullable: false})
-    qtdVendida: number;
-
     @Column({name: 'dataVenda', nullable: false})
     dataVenda: Date;
 
