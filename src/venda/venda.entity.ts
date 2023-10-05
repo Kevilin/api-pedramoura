@@ -19,4 +19,10 @@ export class VendaEntity {
 
     @Column({name: 'observacao', nullable: true})
     observacao: string;
+
+    @Column({name: 'quantidade', nullable: false})
+    quantidade: number;
+
+    @Column({name: 'produto', nullable: false})
+    produto: string;
 }

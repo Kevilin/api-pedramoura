@@ -23,6 +23,15 @@ export class ProdutoService {
     return produtosLista;
   }
 
+  async getValorProduto(idProduto) {
+    try {
+      const valor = await this.produtoRepository.findOneBy(idProduto);
+      return valor;
+    } catch (error) {
+      return error;
+    }
+  }
+
   async atualizaProduto(id: string, novosDados) {
     const entityName = await this.produtoRepository.findOneBy({ id });
     Object.assign(entityName, novosDados);

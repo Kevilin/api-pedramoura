@@ -24,4 +24,10 @@ export class CriaVendaDTO {
 
   @IsNotEmpty({ message: ''})
   produtosVendas: string;
+
+  @IsNotEmpty({ message: ''})
+  quantidade: number;
+
+  @IsNotEmpty({ message: ''})
+  produto: string;
 }

@@ -5,7 +5,7 @@ export class ProdutoEntity {
     @PrimaryGeneratedColumn()
     id: string;
 
-    @Column({name: 'nome', length: 100, nullable: false})
+    @Column({name: 'nome', length: 150, nullable: false})
     nome: string;
 
     @Column({name: 'valor', type: 'decimal'})

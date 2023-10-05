@@ -27,22 +27,12 @@ export class VendaController {
       venda.vendedor = dadosVenda.vendedor;
       venda.cliente = dadosVenda.cliente;
       venda.observacao = dadosVenda.observacao;
+      venda.quantidade = dadosVenda.quantidade;
+      venda.produto = dadosVenda.produto;
 
       const vendaCadastrada = await this.vendaService.criaVenda(venda); //vendas
 
       let idVenda = parseInt(vendaCadastrada.id);
-
-      const jsonString = JSON.stringify(dadosVenda.produtosVendas);
-      const array = JSON.parse(jsonString);
-
-      array.map((produtovenda) => {
-        var vendasProdutos = new VendasProdutosEntity();
-        vendasProdutos.idProduto = produtovenda.idProduto;
-        vendasProdutos.quantidade = produtovenda.quantidade;
-        vendasProdutos.idVenda = idVenda;
-
-        this.vendaService.criaVendasProdutos(vendasProdutos);
-      });
 
       return {
         mensagem: `venda ${idVenda} cadastrada com sucesso`,
